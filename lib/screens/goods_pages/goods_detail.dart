@@ -89,7 +89,6 @@ class _GoodsDetail extends State<GoodsDetail> {
               errorWidget: (context, url, error) =>
                   Image.asset("images/no_logo.png"),
               height: 80,
-              // width: double.infinity,
               fit: BoxFit.fitHeight,
             ),
           ),
@@ -104,7 +103,6 @@ class _GoodsDetail extends State<GoodsDetail> {
           SizedBox(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //mainAxisSize: MainAxisSize.max,
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.all(10.0),
@@ -324,8 +322,6 @@ class _GoodsDetail extends State<GoodsDetail> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 50 / 2),
                       child: Text(
-                        // if our item is less  then 10 then  it shows 01 02 like that
-                        // numOfItems.toString().padLeft(2, "0"),
                         "${double.parse(rez.toString()).toStringAsFixed(1)}",
                         style: Theme.of(context).textTheme.headline6,
                       ),
@@ -349,17 +345,12 @@ class _GoodsDetail extends State<GoodsDetail> {
                             padding: const EdgeInsets.all(10.0),
                             child: FlatButton(
                                 onPressed: () {
-                                  aaaaa();
-                                  // Scaffold.of(context).showSnackBar(SnackBar(
-                                  //   content: Text("Необходимо авторизоваться!"),
-                                  // ));
+                                  addBasket();
                                   Flushbar(
                                     message:
                                         "Товар успешно добавлен в корзину!",
                                     duration: Duration(seconds: 3),
                                   ).show(context);
-                                  // showAlertDialog(context,
-                                  //     "Товар успешно добавлен в корзину!");
                                 },
                                 child: Center(
                                     child: Text(
@@ -373,15 +364,10 @@ class _GoodsDetail extends State<GoodsDetail> {
                   )
                 ]),
           SizedBox(height: 40.0)
-
-          // CartCounter(),
-        ])
-
-        // bottomNavigationBar: BottomBar(),
-        );
+        ]));
   }
 
-  aaaaa() {
+  addBasket() {
     var dio = new Dio();
     String url = "${Constants.baseUrl}api/v1/addBasket";
 
@@ -394,39 +380,7 @@ class _GoodsDetail extends State<GoodsDetail> {
       "price": widget.goodsPrice
     };
 
-    var response = dio.post(url, data: FormData.fromMap(_addBasketParameters));
-    //print(response.data.toString());
-  }
-
-  showAlertDialog(BuildContext contex, String message) {
-    // set up the button
-    Widget okButton = FlatButton(
-      child: Text(
-        "OK",
-        style: TextStyle(color: Colors.red),
-      ),
-      onPressed: () {
-        Navigator.of(context).pop();
-        aaaaa();
-      },
-    );
-
-    // set up the AlertDialog
-    AlertDialog alert = AlertDialog(
-      title: Text("Сообщение"),
-      content: Text(message),
-      actions: [
-        okButton,
-      ],
-    );
-
-    // show the dialog
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return alert;
-      },
-    );
+    dio.post(url, data: FormData.fromMap(_addBasketParameters));
   }
 
   SizedBox buildOutlineButton({IconData icon, Function press}) {
