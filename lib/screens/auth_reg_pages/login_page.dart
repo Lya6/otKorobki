@@ -46,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 Container(
                   width: double.infinity,
-                  height: 150,
+                  height: 185,
                   child: Image(
                     image: Constants.image,
                     // height: 100,
@@ -185,62 +185,10 @@ class _LoginPageState extends State<LoginPage> {
                   )
                 ],
               )),
-          // SizedBox(height: 15.0),
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.center,
-          //   children: <Widget>[
-          //     Text(
-          //       'New to Spotify?',
-          //       style: TextStyle(
-          //         fontFamily: 'Montserrat',
-          //       ),
-          //     ),
-          //     SizedBox(width: 5.0),
-          //     InkWell(
-          //       child: Text('Register',
-          //           style: TextStyle(
-          //               color: Colors.green,
-          //               fontFamily: 'Montserrat',
-          //               fontWeight: FontWeight.bold,
-          //               decoration: TextDecoration.underline)),
-          //     )
-          //   ],
-          // )
         ]));
   }
 
   showAlertDialog(BuildContext context, String error) {
     Alert(context: context, title: "Ошибка", desc: error, buttons: []).show();
-
-    // set up the button
-    // Widget okButton = FlatButton(
-    //   child: Text(
-    //     "OK",
-    //     style: TextStyle(color: Colors.red),
-    //   ),
-    //   onPressed: () {
-    //     Timer(Duration(seconds: 1), () {
-    //       print("back");
-    //       Navigator.of(context).pop();
-    //     });
-    //   },
-    // );
-
-    // // set up the AlertDialog
-    // AlertDialog alert = AlertDialog(
-    //   title: Text("Ошибка"),
-    //   content: Text(error),
-    //   actions: [
-    //     okButton,
-    //   ],
-    // );
-
-    // // show the dialog
-    // showDialog(
-    //   context: context,
-    //   builder: (BuildContext context) {
-    //     return alert;
-    //   },
-    // );
   }
 }

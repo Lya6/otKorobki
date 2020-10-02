@@ -73,6 +73,7 @@ flutter:
     - images/logo-ru.png
     - images/logo.png
     - images/logo_beta.png
+    - images/logo_korzinka.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

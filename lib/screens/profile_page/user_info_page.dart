@@ -80,12 +80,12 @@ class _UserInfoPageState extends State<UserInfoPage> {
               children: <Widget>[
                 Container(
                   width: double.infinity,
-                  height: 137,
+                  height: 160,
                   child: Image(
                     image: Constants.image,
                     // height: 100,
                     width: double.infinity,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.fill,
                   ),
                 ),
               ],

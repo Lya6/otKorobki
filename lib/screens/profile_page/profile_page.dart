@@ -83,7 +83,7 @@ class _ProfilePageState extends State<ProfilePage> {
         children: [
           Image(
             image: Constants.image,
-            height: 150,
+            height: 170,
             width: double.infinity,
             fit: BoxFit.cover,
           ),

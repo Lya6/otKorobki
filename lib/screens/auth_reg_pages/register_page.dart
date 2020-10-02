@@ -59,7 +59,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       image: Constants.image,
                       // height: 100,
                       width: double.infinity,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fitHeight,
                     ),
                   ),
                 ],
