@@ -145,6 +145,7 @@ class _GoodsDetail extends State<GoodsDetail> {
                       padding: const EdgeInsets.only(left: 25),
                       child: Text(
                         "Продавец:",
+                        textAlign: TextAlign.right,
                         style: TextStyle(
                             fontSize: 13,
                             color: Colors.black,
@@ -154,6 +155,7 @@ class _GoodsDetail extends State<GoodsDetail> {
                       child: Padding(
                           padding: const EdgeInsets.only(left: 30, right: 30),
                           child: Text(widget.storeName ?? "",
+                              textAlign: TextAlign.right,
                               style: TextStyle(
                                   fontSize: 13,
                                   color: Colors.black,
@@ -178,6 +180,7 @@ class _GoodsDetail extends State<GoodsDetail> {
                       child: Padding(
                           padding: const EdgeInsets.only(left: 30, right: 30),
                           child: Text(widget.brandName ?? "",
+                              textAlign: TextAlign.right,
                               style: TextStyle(
                                   fontSize: 13,
                                   color: Colors.black,
@@ -202,6 +205,7 @@ class _GoodsDetail extends State<GoodsDetail> {
                       child: Padding(
                           padding: const EdgeInsets.only(left: 30, right: 30),
                           child: Text(widget.manufacturerName ?? "",
+                              textAlign: TextAlign.right,
                               style: TextStyle(
                                   fontSize: 13,
                                   color: Colors.black,
