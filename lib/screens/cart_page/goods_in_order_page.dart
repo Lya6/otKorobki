@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -415,47 +416,11 @@ class _GoodsInOrderScreenState extends State<GoodsInOrderScreen> {
                 padding: const EdgeInsets.all(8),
                 child: SimpleDialogOption(
                   onPressed: () async {
-                    if (widget.type == 1) {
-                      var dio = new Dio();
-                      String url =
-                          "${Constants.baseUrl}api/v1/confirmOrderMobile";
-
-                      final Map<String, dynamic> _payParameters = {
-                        "userId": widget.userId,
-                        "storeId": widget.storeId,
-                        "comment": "no",
-                        "deliveryId": -1,
-                        "typeDelivery": widget.type,
-                        "source": 0,
-                        "typePayment": 1
-                      };
-
-                      final response = await dio.post(url,
-                          data: FormData.fromMap(_payParameters));
-
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ThankPage(
-                                  number:
-                                      response.data["natural_id"].toString(),
-                                  typePay: "1",
-                                )),
-                        (Route<dynamic> route) => false,
-                      );
+                    if (widget.type == 0) {
+                      shipmentPayment(1);
                     } else {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => AddressPage(
-                                    type: "0",
-                                    userId: widget.userId,
-                                    parentId: widget.parentId,
-                                    typePay: "1",
-                                    storeId: widget.storeId,
-                                  )));
+                      deliveryPayment(1);
                     }
-                    // _dismissDialog();
                   },
                   child: const Text('Наличными'),
                 ),
@@ -464,47 +429,11 @@ class _GoodsInOrderScreenState extends State<GoodsInOrderScreen> {
                 padding: const EdgeInsets.all(8),
                 child: SimpleDialogOption(
                   onPressed: () async {
-                    if (widget.type == 1) {
-                      var dio = new Dio();
-                      String url =
-                          "${Constants.baseUrl}api/v1/confirmOrderMobile";
-
-                      final Map<String, dynamic> _payParameters = {
-                        "userId": widget.userId,
-                        "storeId": widget.storeId,
-                        "comment": "no",
-                        "deliveryId": 0,
-                        "typeDelivery": widget.type,
-                        "typePayment": 2
-                      };
-
-                      final response = await dio.post(url,
-                          data: FormData.fromMap(_payParameters));
-
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ThankPage(
-                                  number:
-                                      response.data["natural_id"].toString(),
-                                  typePay: "2",
-                                )),
-                        (Route<dynamic> route) => false,
-                      );
+                    if (widget.type == 0) {
+                      shipmentPayment(2);
                     } else {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => AddressPage(
-                                    type: "0",
-                                    userId: widget.userId,
-                                    parentId: widget.parentId,
-                                    typePay: "2",
-                                    storeId: widget.storeId,
-                                  )));
+                      deliveryPayment(2);
                     }
-
-                    // _dismissDialog();
                   },
                   child: const Text('Картой при получении'),
                 ),
@@ -513,46 +442,11 @@ class _GoodsInOrderScreenState extends State<GoodsInOrderScreen> {
                 padding: const EdgeInsets.all(8),
                 child: SimpleDialogOption(
                   onPressed: () async {
-                    if (widget.type == 1) {
-                      var dio = new Dio();
-                      String url =
-                          "${Constants.baseUrl}api/v1/confirmOrderMobile";
-
-                      final Map<String, dynamic> _payParameters = {
-                        "userId": widget.userId,
-                        "storeId": widget.storeId,
-                        "comment": "no",
-                        "deliveryId": 0,
-                        "typeDelivery": widget.type,
-                        "typePayment": 3
-                      };
-
-                      final response = await dio.post(url,
-                          data: FormData.fromMap(_payParameters));
-
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ThankPage(
-                                  number:
-                                      response.data["natural_id"].toString(),
-                                  typePay: "3",
-                                )),
-                        (Route<dynamic> route) => false,
-                      );
+                    if (widget.type == 0) {
+                      shipmentPayment(3);
                     } else {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => AddressPage(
-                                    type: "0",
-                                    userId: widget.userId,
-                                    parentId: widget.parentId,
-                                    typePay: "3",
-                                    storeId: widget.storeId,
-                                  )));
+                      deliveryPayment(3);
                     }
-                    // _dismissDialog();
                   },
                   child: const Text('Оплата по счёту'),
                 ),
@@ -561,47 +455,11 @@ class _GoodsInOrderScreenState extends State<GoodsInOrderScreen> {
                 padding: const EdgeInsets.all(8),
                 child: SimpleDialogOption(
                   onPressed: () async {
-                    if (widget.type == 1) {
-                      var dio = new Dio();
-                      String url =
-                          "${Constants.baseUrl}api/v1/confirmOrderMobile";
-
-                      final Map<String, dynamic> _payParameters = {
-                        "userId": widget.userId,
-                        "storeId": widget.storeId,
-                        "comment": "no",
-                        "deliveryId": 0,
-                        "typeDelivery": widget.type,
-                        "typePayment": 4
-                      };
-
-                      final response = await dio.post(url,
-                          data: FormData.fromMap(_payParameters));
-
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ThankPage(
-                                  number:
-                                      response.data["natural_id"].toString(),
-                                  typePay: "4",
-                                  url: response.data["url"].toString(),
-                                )),
-                        (Route<dynamic> route) => false,
-                      );
+                    if (widget.type == 0) {
+                      shipmentPayment(4);
                     } else {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => AddressPage(
-                                    type: "0",
-                                    userId: widget.userId,
-                                    parentId: widget.parentId,
-                                    typePay: "4",
-                                    storeId: widget.storeId,
-                                  )));
+                      deliveryPayment(4);
                     }
-                    // _dismissDialog();
                   },
                   child: const Text('Оплата картой на сайте'),
                 ),
@@ -609,5 +467,50 @@ class _GoodsInOrderScreenState extends State<GoodsInOrderScreen> {
             ],
           );
         });
+  }
+
+  void deliveryPayment(int typePay) {
+    Navigator.pop(context);
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (_) => AddressPage(
+                  type: "1",
+                  userId: widget.userId,
+                  parentId: widget.parentId,
+                  typePay: "$typePay",
+                  storeId: widget.storeId,
+                )));
+  }
+
+  Future<void> shipmentPayment(int typePayment) async {
+    var dio = new Dio();
+    String url = "${Constants.baseUrl}api/v1/confirmOrderMobile";
+
+    final Map<String, dynamic> _payParameters = {
+      "userId": widget.userId,
+      "storeId": widget.storeId,
+      "comment": "no",
+      "deliveryId": null,
+      "typeDelivery": widget.type,
+      "typePayment": typePayment,
+      "source": Platform.isAndroid ? 5 : 4
+    };
+
+    print(Platform.isAndroid ? 5 : 4);
+
+    final response =
+        await dio.post(url, data: FormData.fromMap(_payParameters));
+    Navigator.pop(context);
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(
+          builder: (context) => ThankPage(
+                number: response.data["natural_id"].toString(),
+                typePay: "$typePayment",
+                url: response.data["url"].toString(),
+              )),
+      (Route<dynamic> route) => false,
+    );
   }
 }

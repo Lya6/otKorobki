@@ -9,6 +9,7 @@ import 'package:roundcheckbox/roundcheckbox.dart';
 import 'package:template_application/main.dart';
 import 'package:template_application/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:template_application/services/push_notification_service.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -19,6 +20,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final firstName = TextEditingController();
   final email = TextEditingController();
   final password = TextEditingController();
+  String val;
   String allError = "";
 
   @override
@@ -54,7 +56,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 children: <Widget>[
                   Container(
                     width: double.infinity,
-                    height: 128,
+                    height: 130,
                     child: Image(
                       image: Constants.image,
                       // height: 100,
@@ -262,11 +264,13 @@ class _RegisterPageState extends State<RegisterPage> {
             var dio = new Dio();
             String url = "${Constants.baseUrl}api/v1/signup";
 
+            print(val);
             final Map<String, dynamic> _signUpParameters = {
               "firstname": firstName.text,
               "email": email.text,
               "phone": "00",
-              "password": password.text
+              "password": password.text,
+              "device_id": await PushNotificationService().getToken()
             };
 
             final response =

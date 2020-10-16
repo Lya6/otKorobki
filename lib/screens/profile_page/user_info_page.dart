@@ -79,13 +79,12 @@ class _UserInfoPageState extends State<UserInfoPage> {
             child: Stack(
               children: <Widget>[
                 Container(
-                  width: double.infinity,
-                  height: 160,
+                  height: 130,
                   child: Image(
                     image: Constants.image,
                     // height: 100,
                     width: double.infinity,
-                    fit: BoxFit.fill,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ],

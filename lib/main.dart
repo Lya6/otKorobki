@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:template_application/constants.dart';
 import 'package:template_application/screens/region_page.dart';
 import 'package:template_application/screens/search/search_page.dart';
+import 'package:template_application/services/push_notification_service.dart';
 import 'package:template_application/viewmodels/category/category_list_view_model.dart';
 import 'package:template_application/viewmodels/goods_order/goods_order_list_view_model.dart';
 import 'package:template_application/viewmodels/new_goods/new_goods_list_view_model.dart';
@@ -24,7 +25,10 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   SharedPreferences pref = await SharedPreferences.getInstance();
+
   // userId = pref.getInt("userId");
+  PushNotificationService pushNotificationService = PushNotificationService();
+  await pushNotificationService.init();
 
   if (pref.getString('parentId') == null)
     runApp(MyApp());
@@ -94,11 +98,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MyAppSecond extends StatelessWidget {
-  // final int userId;
-
-  // MyAppSecond({this.userId});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiProvider(providers: [

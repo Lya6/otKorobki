@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -94,7 +95,7 @@ class _AddressPageState extends State<AddressPage> {
                       return ListTile(
                           title: Text(listViewModel.listAddress[index].address),
                           onTap: () async {
-                            if (widget.type == "0") {
+                            if (widget.type == "1") {
                               var dio = new Dio();
                               String url =
                                   "${Constants.baseUrl}api/v1/confirmOrderMobile";
@@ -103,9 +104,11 @@ class _AddressPageState extends State<AddressPage> {
                                 "userId": widget.userId,
                                 "storeId": widget.storeId,
                                 "comment": "no",
-                                "deliveryId": 0,
+                                "deliveryId":
+                                    listViewModel.listAddress[index].id,
                                 "typeDelivery": widget.type,
-                                "typePayment": widget.typePay
+                                "typePayment": widget.typePay,
+                                "source": Platform.isAndroid ? "5" : "4"
                               };
 
                               final response = await dio.post(url,

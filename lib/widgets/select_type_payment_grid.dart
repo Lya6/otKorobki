@@ -38,7 +38,16 @@ class SelectTypePaymentGrid extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             FlatButton(
-              onPressed: () => {lol(context)},
+              onPressed: () => {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => GoodsInOrderScreen(
+                          userId: userId,
+                          parentId: parentId,
+                          storeId: storeId,
+                          minSum: "1",
+                          type: 1,
+                        )))
+              },
               child: Container(
                 height: 180.0,
                 width: 350.0,
@@ -76,7 +85,7 @@ class SelectTypePaymentGrid extends StatelessWidget {
                                 parentId: parentId,
                                 storeId: storeId,
                                 minSum: "1",
-                                type: 1,
+                                type: 0,
                               )))
                     },
                 child: Container(

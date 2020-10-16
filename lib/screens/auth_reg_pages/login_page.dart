@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:template_application/main.dart';
+import 'package:template_application/services/push_notification_service.dart';
 import 'register_page.dart';
 import 'package:dio/dio.dart';
 import 'package:template_application/constants.dart';
@@ -46,12 +47,12 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 Container(
                   width: double.infinity,
-                  height: 185,
+                  height: 130,
                   child: Image(
                     image: Constants.image,
                     // height: 100,
                     width: double.infinity,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.fitHeight,
                   ),
                 ),
               ],
@@ -99,6 +100,8 @@ class _LoginPageState extends State<LoginPage> {
                           onTap: () {},
                           child: FlatButton(
                             onPressed: () async {
+                              Future<String> future = Future(
+                                  () => PushNotificationService().getToken());
                               var dio = new Dio();
                               String url = "${Constants.baseUrl}api/v1/login";
 
@@ -141,7 +144,6 @@ class _LoginPageState extends State<LoginPage> {
                               } else
                                 showAlertDialog(
                                     context, response.data["error"]);
-                              // print(response.data["error"]);
                             },
                             child: Center(
                               child: Text(

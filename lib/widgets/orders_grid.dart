@@ -68,7 +68,7 @@ class OrdersGrid extends StatelessWidget {
                                     },
                                     child: Image(
                                       color: Constants.color,
-                                      image: deliveryType == "1"
+                                      image: deliveryType == "0"
                                           ? AssetImage("images/recipient.png")
                                           : AssetImage("images/shipment.png"),
                                       height: 180,
@@ -85,7 +85,7 @@ class OrdersGrid extends StatelessWidget {
                                 )));
                       },
                       child: Text(
-                        deliveryType == "1"
+                        deliveryType == "0"
                             ? "Тип доставки: Самовывоз"
                             : "Тип доставки: Доставка",
                         textAlign: TextAlign.center,

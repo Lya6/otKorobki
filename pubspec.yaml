@@ -34,6 +34,7 @@ dependencies:
   flushbar: ^1.10.4
   roundcheckbox: ^1.0.0+1
   rflutter_alert: ^1.1.0
+  firebase_messaging: ^5.1.4
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -74,6 +75,8 @@ flutter:
     - images/logo.png
     - images/logo_beta.png
     - images/logo_korzinka.png
+    - images/logo_dostavka.png
+    - images/logo_maidan.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
